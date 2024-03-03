@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แจ้งความเดือดร้อน</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            
+        }
+
+        h1 {
+            color: #333;
+            background-color: white;
+            padding: 20px;
+            font-size: 24px;
+        }
+
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button {
+            margin: 10px;
+            padding: 15px 30px;
+            background-color: #cc33ff;
+            color: #FFF;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        @media screen and (max-width: 600px) {
+            h1 {
+                font-size: 18px;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-top: 120px;">
+        <h1>แจ้งความเดือดร้อน</h1>
+    </div>
+    <div class="button-container"> 
+        <a href="Road Matters" class="button">เรื่องถนน</a>
+        <a href="Water Matters" class="button">เรื่องน้ำ</a>
+        <a href="Electrical matters" class="button">เรื่องไฟฟ้า</a>
+        <a href="General" class="button">เรื่องทั่วไป</a>
+    </div>
+</body>

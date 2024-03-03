@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        background-color: #ffffff;
+    }
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .purple-button {
+        background-color: #ff00ff;
+        padding: 10px 15px;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #000000;
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .header-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+
+    .header {
+        margin: 50;
+        flex-grow: 5;
+    }
+
+    .button-container-right {
+        display: flex;
+        align-items: center;
+        margin-right: 400px; 
+    }
+    .purple-button-left {
+        background-color: #ffaeff;
+        padding: 10px 15px;
+        border-radius: 4px;
+        text-decoration: none;
+        color: #000000;
+        display: inline-block;
+        margin-left: 100px;
+    }
+</style>
+
+<div class="button-container">
+    <a href="{% url 'admin_login' %}" class="button purple-button">ออกจากระบบ</a>
+</div>
+
+<div class="header-container">
+    <h2 class="header">สมาชิกผู้แทนในหมู่บ้าน</h2>
+    <div class="button-container-right">
+        <a href="{% url 'add_representative' %}" class="button purple-button-left">เพิ่ม</a>
+        {% if representative %}
+            <a href="{% url 'edit_representative'  %}" class="button purple-button-left">แก้ไข</a>
+        {% endif %}
+    </div>
+</div>
+
+
+    <div class="header-container">
+        <h2 class="header">สมาชิกอาสาสมัครสาธารณสุขประจำหมู่บ้าน (อสม)</h2>
+        <div class="button-container-right">
+            <a href="{% url 'add_villagepublic' %}" class="button purple-button-left">เพิ่ม</a>
+            {% if villagepublic %}
+                <a href="{% url 'edit_villagepublic' villagepublic.id %}" class="button purple-button-left">แก้ไข</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="header-container">
+        <h2 class="header">ข่าวสารกิจกรรม</h2>
+        <div class="button-container-right">
+            <a href="{% url 'add_activity_news' %}" class="button purple-button-left">เพิ่ม</a>
+            {% if activity_news %}
+                <a href="{% url 'edit_activity_news' activity_news.id %}" class="button purple-button-left">แก้ไข</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="header-container">
+        <h2 class="header">รายรับรายจ่าย</h2>
+        <div class="button-container-right">
+            <a href="{% url 'add_income_expenses' %}" class="button purple-button-left">เพิ่ม</a>
+            {% if income_expenses %}
+                <a href="{% url 'edit_income_expenses' income_expenses.id %}" class="button purple-button-left">แก้ไข</a>
+            {% endif %}
+        </div>
+    </div>
+
+<div class="header-container">
+    <h2 class="header">ตอบกลับการแจ้งความเดือดร้อน</h2>
+    <div class="button-container-right">
+        <a href="{% url 'report_issue' %}" class="button purple-button-left">ตอบกลับการแจ้งความเดือดร้อน</a>
+    </div>
+</div>
+<div class="header-container">
+    <h2 class="header">รายงานรายรับรายจ่าย</h2>
+    <div class="button-container-right">
+        <a href="{% url 'donation_reportform' %}" class="button purple-button-left">ดู</a>
+        
+    </div>
+</div>

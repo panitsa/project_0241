@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผู้แทนในหมู่บ้าน</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #FFFFFF;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .members {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .member {
+            max-width: 800px;
+            background-color: white;
+            padding: 50px;
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .member img {
+            max-width: 100%;
+            margin-bottom: 10px;
+            height: 200px;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form label {
+            margin-bottom: 5px;
+        }
+
+        form input,
+        form button {
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #ffff00;
+            color: #000000;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @media screen and (min-width: 600px) {
+            .members {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>แก้ไข สมาชิกผู้แทนในหมู่บ้าน</h1>
+    
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="member">
+                <img src="{{ representatives.0.image.url }}" alt="{{ representatives.0.first_name }} {{ representatives.0.last_name }}">
+                <p>ชื่อ:</p><input type="text" name="first_name" value="{{ representatives.0.first_name }}">
+                <p>นามสกุล:</p><input type="text" name="last_name" value="{{ representatives.0.last_name }}">
+                <p>ตำแหน่ง:</p><input type="text" name="position" value="{{ representatives.0.position }}">
+                <p>เบอร์โทร:</p><input type="text" name="phoneNumber" value="{{ representatives.0.phone_number }}">
+                <button type="submit" name="action" value="save">บันทึก</button>
+                <button type="submit" name="action" value="delete_{{ representatives.0.id }}">ลบ</button>
+            </div>
+        </form>
+    
+        <div class="members">
+            {% for representative in representatives|slice:"1:" %}
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="member">
+                    <img src="{{ representative.image.url }}" alt="{{ representative.first_name }} {{ representative.last_name }}">
+                    <p>ชื่อ:</p><input type="text" name="first_name" value="{{ representative.first_name }}">
+                    <p>นามสกุล:</p><input type="text" name="last_name" value="{{ representative.last_name }}">
+                    <p>ตำแหน่ง:</p><input type="text" name="position" value="{{ representative.position }}">
+                    <p>เบอร์โทร:</p><input type="text" name="phoneNumber" value="{{ representative.phone_number }}">
+                    <button type="submit" name="action" value="save">บันทึก</button>
+                    <button type="submit" name="action" value="delete_{{ representative.id }}">ลบ</button>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+    </body>
+    </html>
+    
